@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!--获取六个小时数据-->            
+<mapper namespace="com.test.demo.dao.MarketRealInfoDao"> 
+		<sql id="tableName">yt_market_real_info</sql>
+		<sql id="column">
+					trade_count,
+					trade_time,
+					price,
+					time,
+					create_time 
+		</sql>
+		
+
+		<!-- 保存彩票数据 -->
+		<insert id="insertRealInfo"  parameterType="com.test.demo.bean.MarketRealInfoBean"  >
+			insert into  yt_market_real_info(
+					trade_count,
+					trade_time,
+					price,
+					time,
+					create_time 
+				)values
+				<foreach collection="result" index="index" separator="," item="resultList">
+					(	#{resultList.tradeCount},
+						#{resultList.tradeTime},
+						#{resultList.price},
+						#{resultList.time},
+						UNIX_TIMESTAMP()
+					 )
+				</foreach>
+				 <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">  
+           		 select LAST_INSERT_ID();  
+       			 </selectKey>	
+		</insert>
+		
+		<!-- 查询 -->
+		<select id="getRealInfo"  resultType="Map">
+			select max(t.trade_time) as tradeTime  from yt_market_real_info t 
+		</select>
+
+
+</mapper>
