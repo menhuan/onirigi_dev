@@ -52,4 +52,32 @@ public class BaseCofig {
 	 */
 	public static final int ENTITY_NEWS =1;
 	
+	
+	/*****************************************正则匹配规则*********************************************************/
+	/**
+	 * 解析 首页的数据
+	 */
+	public static final String PATER_KR_HTML= "http://36kr.com/p/[0-9]+\\.html";
+	/**
+	 * 从脚本中找到属于公共的部分内容
+	 */
+	public static final String SCRIPT_KR_HTML = "<script.*?</script>";
+	
+	/**
+	 * 爬虫  首页入口
+	 */
+	public static final String PATER_HTML_KR_INDEX = "http://36kr.com";
+	
+	/**
+	 * 链接
+	 */
+	public static final String CONTAIN_KR_COTENT= "http://36kr.com/p/" ;
+	
+	/**
+	 * 匹配里面的数字
+	 */
+	public static final String CONTAIN_KR_NUM="[0-9]+";
+	
+	
+	
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- 彩票数据 -->            
+<mapper namespace="com.test.demo.dao.LotterDataDao"> 
+
+		<!-- 保存彩票数据 -->
+		<insert id="saveLotterData"  parameterType="Map"  >
+			 INSERT  INTO cz_lottery_data_today (
+					expect,
+					open_code ,
+					open_time ,
+					open_time_stamp,
+					create_time
+ 			)values(
+		     	  # {expect},
+		          #{opencode},
+			      #{ opentime},
+			      #{ opentimestamp},
+			      #{ UNIX_TIMESTAMP()}
+			)
+			 
+		</insert>
+		
+
+</mapper>

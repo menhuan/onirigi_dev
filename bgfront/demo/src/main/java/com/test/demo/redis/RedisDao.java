@@ -17,7 +17,7 @@ public class RedisDao {
 
 	 	
 	@Autowired
-	RedisTemplate redisTemplate;
+	RedisTemplate<String,String> redisTemplate;
 	
 	
 	/**
@@ -28,7 +28,7 @@ public class RedisDao {
 	 * @return
 	 */
 	public String get (String key) {
-		 return ObjectUtils.toString(redisTemplate.opsForValue().get(key)) ;
+		 return redisTemplate.opsForValue().get(key) ;
 	}
 	
 	/**
@@ -79,6 +79,16 @@ public class RedisDao {
 	}
 	
 	/**
+	 * 根据key 从set中拿出来集合  检查是否存在的 
+	 * @author ASUS
+	 * 创建时间  2017年10月20日 下午10:06:13
+	 * @param key
+	 */
+	public void  smember(String key) {
+		redisTemplate.opsForSet().members(key);
+	}
+	
+	/**
 	 * 返回集合总数
 	 * @author ASUS
 	 * 创建时间  2017年9月12日 下午9:54:43
@@ -123,9 +133,20 @@ public class RedisDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public String brpop(int timeout,String key){
-		TimeUnit  unit =TimeUnit.MINUTES;
-		return  redisTemplate.opsForList().rightPop(key, timeout, unit).toString();
+	public String brpop(String key){
+		return redisTemplate.opsForList().rightPop(key);
+	}
+	
+	/**
+	 * 将list 中的数据都拿出来
+	 * @author ASUS
+	 * 创建时间  2017年10月23日 下午9:30:50
+	 * @param key
+	 * @return
+	 */
+	public List<String> brpopList(String key){
+		Long end =redisTemplate.opsForList().size(key);
+		return redisTemplate.opsForList().range(key, 0, end);
 	}
 	
 	/**

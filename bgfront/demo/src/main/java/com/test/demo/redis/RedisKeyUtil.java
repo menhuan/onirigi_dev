@@ -9,6 +9,17 @@ package com.test.demo.redis;
 public class RedisKeyUtil {
 	
 	/**
+	 * 36kr 首页里面符合正则的html页面
+	 */
+	public static final String REDIS_LIST_SUCCESS_HTML_KEY = "redis_list_success_kr_html_key";
+	
+	/**
+	 * 36kr 首页里面符合正则的html页面 入库失败后的内容插入到对应的队列中去
+	 */
+	public static final String REDIS_LIST_FAILED_HTML_KEY = "redis_list_success_kr_html_key";
+	
+	
+	/**
 	 * 分隔符
 	 */
 	private static String SPLIT=":";

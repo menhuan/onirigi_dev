@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- 彩票数据 -->            
+<mapper namespace="com.test.demo.dao.kr.HtmlDao"> 
+
+		<sql id="table">kr_html</sql>
+		<sql id="insertTable">html, html_id , created_date , updated_date</sql>
+		<sql id="selectTable">id ,html ,htmlId ,createdDate , updateDate</sql>
+
+		<!-- 保存html数据 -->
+		<insert id="addHtml"  parameterType="com.test.demo.bean.kr.HtmlBean"  >
+			insert into  
+				<include refid="table"></include>
+			 (
+			 	 html ,
+			 	 html_id ,
+			 	 created_date ,
+			 	 updated_date
+			 )values
+		 	<foreach collection="beans" index="index" separator="," item="resultList">
+				(	#{resultList.html},
+					#{resultList.htmlId},
+					NOW(),
+					#{resultList.updatedDate}
+				 )
+			</foreach>
+		    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">  
+          		 select LAST_INSERT_ID();  
+      	    </selectKey>	
+			 
+		</insert>
+		
+		
+
+</mapper>

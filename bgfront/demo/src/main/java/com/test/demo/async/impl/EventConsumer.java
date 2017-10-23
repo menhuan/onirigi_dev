@@ -92,10 +92,10 @@ public class EventConsumer implements InitializingBean,ApplicationContextAware {
 				while(true) {
 					String key =RedisKeyUtil.getEventQueueKey();
 					
-					String message=redisDao.brpop(0, key);
+					String message=redisDao.brpop( key);
 					
 				
-					if(message.equals(key)) {
+					if(key.equals(message)) {
 						continue;
 					}
 					
