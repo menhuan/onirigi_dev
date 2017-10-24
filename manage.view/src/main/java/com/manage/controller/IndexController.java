@@ -46,7 +46,6 @@ public class IndexController {
             list  =ResultUtil.getResultList(resultMap);
 
         }
-
         model.addAttribute("vos", list);
         return "home";
     }

@@ -7,21 +7,21 @@
                 <div class="votebar">
                     <c:choose>
                         <c:when test="${vo.like >0}">
-                            <button class="click-like up pressed" data-id="${vo.news.id}" title="赞同"><i class="vote-arrow"></i>
-                                <span class="count">${vo.news.likeCount}</span></button>
+                            <button class="click-like up pressed" data-id="${news.id}" title="赞同"><i class="vote-arrow"></i>
+                                <span class="count">${news.likeCount}</span></button>
                         </c:when>
                         <c:otherwise>
-                            <button class="click-like up" data-id="${vo.news.id}" title="赞同"><i class="vote-arrow"></i>
-                                <span class="count">${vo.news.likeCount}</span></button>
+                            <button class="click-like up" data-id="${news.id}" title="赞同"><i class="vote-arrow"></i>
+                                <span class="count">${news.likeCount}</span></button>
                         </c:otherwise>
                     </c:choose>
 
                     <c:choose>
                         <c:when test="${vo.like < 0}">
-                            <button class="click-dislike down pressed" data-id="${vo.news.id}" title="反对"><i class="vote-arrow"></i></button>
+                            <button class="click-dislike down pressed" data-id="${news.id}" title="反对"><i class="vote-arrow"></i></button>
                         </c:when>
                         <c:otherwise>
-                            <button class="click-dislike down" data-id="${vo.news.id}" title="反对"><i class="vote-arrow"></i></button>
+                            <button class="click-dislike down" data-id="${news.id}" title="反对"><i class="vote-arrow"></i></button>
                         </c:otherwise>
                     </c:choose>
                 </div>

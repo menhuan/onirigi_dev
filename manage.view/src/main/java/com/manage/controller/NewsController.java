@@ -52,6 +52,7 @@ public class NewsController {
 
                 List<Map>  list = (List) resultMap.get("comments");
 
+                model.addAttribute("like" ,resultMap.get("like") );
                 model.addAttribute("comments",list);
                 model.addAttribute("news",resultMap.get("news"));
                 model.addAttribute("owner",resultMap.get("owner"));
