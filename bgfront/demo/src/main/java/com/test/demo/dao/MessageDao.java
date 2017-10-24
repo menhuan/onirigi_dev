@@ -25,7 +25,7 @@ public interface MessageDao {
 			+ "	DATE_FORMAT(created_date,'%Y-%m-%d %H:%i:%s') as createdDate";
 
 	@Insert({
-			"insert into ",TABLE_NAME," (",INSERT_FIELDS,") values(","#{formId},#{toId},#{content},#{hasRead},#{conversationId},#{createdDate})"
+			"insert into ",TABLE_NAME," (",INSERT_FIELDS,") values(","#{fromId},#{toId},#{content},#{hasRead},#{conversationId},#{createdDate})"
 	})
 	int addMessage(MessageBean bean);
 	

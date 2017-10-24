@@ -17,4 +17,19 @@
         ORDER BY id DESC
         LIMIT #{offset},#{limit}
     </select>
+    
+    <update id="updateLikeCount" parameterType="com.test.demo.bean.NewsBean" >
+    		update 
+    		<include refid="table">
+    		</include>
+    		<set>
+    			<if test="likeCount != null">
+    				 like_count	=#{likeCount},
+    			</if>
+    		</set>
+    		
+    		where id =#{id}
+    
+    </update>
+    
 </mapper>

@@ -44,10 +44,10 @@ public class Task {
 	 * @author ASUS
 	 * 创建时间  2017年10月23日 下午8:51:52
 	 */
-	@Scheduled(fixedRate=20*60*1000 )
+//	@Scheduled(fixedRate=12*60*60*1000 )
 	public void runKrParse() {
 		try {
-			krHtmlJob.parseHtml();
+		//	krHtmlJob.parseHtml();
 		} catch (Exception e) {
 			log.error("爬虫失败",e);
 		}

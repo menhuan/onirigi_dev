@@ -12,11 +12,11 @@ public class BossJobBean {
 	
 	public Job job ;
 	
-	public List<Job> jobs ;
+	public List<JobsBean> jobs ;
 	
 	public List<RelatedPosts>  relatedPosts;
 
-	public void addJob(Job job ){
+	public void addJob(JobsBean job ){
 		jobs.add(job);
 	}
 	
@@ -56,11 +56,11 @@ public class BossJobBean {
 		this.job = job;
 	}
 
-	public List<Job> getJobs() {
+	public List<JobsBean> getJobs() {
 		return jobs;
 	}
 
-	public void setJobs(List<Job> jobs) {
+	public void setJobs(List<JobsBean> jobs) {
 		this.jobs = jobs;
 	}
 

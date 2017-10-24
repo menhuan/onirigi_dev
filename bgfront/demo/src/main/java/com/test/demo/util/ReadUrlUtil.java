@@ -92,6 +92,7 @@ public class ReadUrlUtil {
 	        		value = value + "}";
 	        		
 	        		try {
+	        			System.out.println(value);
 	            		JSONObject  o =JSON.parseObject(value, JSONObject.class);
 	            		JSONObject  detailAriticle = o.getJSONObject("detailArticle|post");
 	            		JSONArray   abTest = o.getJSONArray("abTest|abtest");
@@ -100,6 +101,7 @@ public class ReadUrlUtil {
 	            		
 	            		DetailAriticleBean  detailBean =JSON.parseObject(detailAriticle.toString(), DetailAriticleBean.class);
 	            		List<abTestValue>  list= JSON.parseArray(abTest.toString(), abTestValue.class) ; 
+	            	
 	            		List<BossJobBean> bossJob = JSON.parseArray(bossJobs.toString(), BossJobBean.class);
 	            		List<HotPostsBean> hots = JSON.parseArray(hotPost.toString(), HotPostsBean.class);
 	            		
