@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>view</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>view</name>
     <description>Demo project for Spring Boot</description>
@@ -57,11 +57,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -76,11 +72,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>manage</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!--帮助部署-->
@@ -110,7 +101,28 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+           
         </plugins>
+         <resources>  
+            <!-- 打包时将jsp文件拷贝到META-INF目录下-->  
+            <resource>  
+                <!-- 指定resources插件处理哪个目录下的资源文件 -->  
+                <directory>src/main/webapp</directory>  
+                <!--注意此次必须要放在此目录下才能被访问到-->  
+                <targetPath></targetPath>  
+                <includes>  
+                    <include>**/**</include>  
+                </includes>  
+            </resource>  
+            <resource>  
+                <directory>src/main/resources</directory>  
+                <includes>  
+                    <include>**/**</include>  
+                </includes>  
+                <filtering>false</filtering>  
+            </resource>  
+        </resources> 
+       
     </build>
 
 

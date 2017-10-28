@@ -1,6 +1,5 @@
 package com.test.demo.controller;
 
-import static org.mockito.Matchers.intThat;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,7 +17,6 @@ import com.test.demo.async.EventType;
 import com.test.demo.async.impl.EventProducer;
 import com.test.demo.base.BaseJson;
 import com.test.demo.bean.EventBean;
-import com.test.demo.bean.MessageBean;
 import com.test.demo.bean.NewsBean;
 import com.test.demo.service.LikeService;
 import com.test.demo.service.NewsService;

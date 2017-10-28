@@ -14,13 +14,13 @@ import com.test.demo.service.ProductTableService;
 @SpringBootTest
 public class DemoApplicationTests {
 
-	@Autowired
+//	@Autowired
 	private ProductTableService  productTableService;
 	
 	@Test
 	public void contextLoads() {
 		
-		productTableService.ProduceBean();
+		//productTableService.ProduceBean();
 	}
 
 }

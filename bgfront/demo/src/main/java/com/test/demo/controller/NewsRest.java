@@ -139,7 +139,6 @@ public class NewsRest extends BaseJson {
         			Map listmap=new HashMap<>();
         			listmap.put("news", bean);
  		            listmap.put("user", userService.getUser(bean.getUserId()));
-        			
  		            vos.add(listmap);
     			}
     			linkedHashMap.put("result", vos );

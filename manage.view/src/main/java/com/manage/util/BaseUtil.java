@@ -12,6 +12,8 @@ public class BaseUtil {
      */
     public static final String BASE_URL = "http://localhost:8081/";
 
+    // public static final String BASE_URL = "http://119.29.41.47:8081/";
+	
     /**
      * 用户登录
      */

@@ -1,6 +1,5 @@
 package com.test.demo.controller;
 
-import static org.mockito.Matchers.intThat;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
-import com.test.demo.base.BaseCofig;
 import com.test.demo.bean.CommentBean;
 import com.test.demo.service.CommentService;
 
