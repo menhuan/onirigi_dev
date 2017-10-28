@@ -1,42 +1,43 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
-<head th:include="header :: header"></head>
+<head th:include="header :: head"></head>
+<head th:include="header :: up"></head>
 <body class="welcome_index">
     <div id="main">
         <div class="container">
             <ul class="letter-list" th:each="con,index:${conversations}" >
 
-                    <li id="conversation-item-10005_622873">
-                        <a class="letter-link" href="/msg/detail?conversationId=${con.conversation.conversationId}"></a>
-                        <div class="letter-info">
-                            <span class="l-time"> ${fn:replace(con.conversation.createdDate,"\"" ,"" ) }</span>
+                    <li id="conversation-item-10005_622873" th:if="${con.user != null}">
+                        <a class="letter-link" th:href="@{'/msg/detail?conversationId='+${con.conversation.conversationId}}"></a>
+                        <div class="letter-info" >
+                            <span class="l-time" th:text="${con.conversation.createdDate}"> </span>
                             <div class="l-operate-bar">
                                 <!--
                                 <a href="javascript:void(0);" class="sns-action-del" data-id="">
                                 删除
                                 </a>
                                 -->
-                                <a href="/msg/detail?conversationId=${con.conversation.conversationId}">
-                                    共${con.conversation.id}条会话
+                                <a th:href="@{'/msg/detail?conversationId='+${con.conversation.conversationId}}" th:text=
+                                        "|共${con.conversation.id}条会话|">
                                 </a>
                             </div>
                         </div>
-                        <div class="chat-headbox">
-                        <span class="msg-num">
-                            ${con.unreadCount}
-                        </span>
-                            <a class="list-head" href="/user/${conversation.userId}">
-                                <img alt="头像" src="${con.conversation.headUrl}">
+                        <div class="chat-headbox" >
+                            <span class="msg-num" th:text="${con.unreadCount}" ></span>
+                            <a class="list-head" th:href="@{/user/${conversation.userId}}">
+                                <img alt="头像" th:src="@{${con.user.headUrl}}">
                             </a>
                         </div>
-                        <div class="letter-detail">
-                            <a title="${con.conversation.userName}" class="letter-name level-color-1">
-                                ${con.conversation.userName}
+                        <div class="letter-detail" >
+                            <a th:title="${con.user.name}" class="letter-name level-color-1"
+                                  th:text="${con.user.name}"  >
+
                             </a>
-                            <p class="letter-brief">
-                                <a href="/msg/detail?conversationId=${con.conversation.conversationId}">
-                                    ${con.conversation.content}
+                            <p class="letter-brief" >
+                                <a th:href="@{'/msg/detail?conversationId='+${con.conversation.conversationId}}"
+                                    th:text="${con.conversation.content}">
+
                                 </a>
                             </p>
                         </div>

@@ -47,7 +47,7 @@
 
                     <li class="js-share" th:if="${user != null}"><a href="javascript:void(0);" ><font color="#f0ffff">分享</font></a></li>
                     <li th:if="${user != null}"><a href="/msg/list" ><font color="#f0ffff">站内信</font></a></li>
-                    <li class="" th:if="${user != null}"><a href="/user/${user.id}/" ><font color="#f0ffff" th:text="${user.name}"></font></span>
+                    <li class="" th:if="${user != null}"><a th:href="@{'/user/'+${user.id}}" ><font color="#f0ffff" th:text="${user.name}"></font></span>
                     </a></li>
 
                     <li class="js-login" th:if="${user == null}"><a href="javascript:void(0);"> <font color="#f0ffff">登录</font> </a></li>

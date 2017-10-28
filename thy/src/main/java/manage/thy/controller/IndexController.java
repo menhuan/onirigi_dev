@@ -44,7 +44,7 @@ public class IndexController {
         List<Map> list = new ArrayList();
         if(ResultUtil.isSuccess(resultMap)){
             list  =ResultUtil.getResultList(resultMap);
-
+            model.addAttribute("like",resultMap.get("like"));
         }
         model.addAttribute("vos", list);
         return "home";

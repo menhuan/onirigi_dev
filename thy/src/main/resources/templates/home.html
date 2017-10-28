@@ -31,11 +31,11 @@
                             </button>
                             <button class="click-dislike down pressed" th:attr="data-id=${vo.news.id}"
                                     title="反对" th:if="${like >0}">
-                                <i class="vote-arrow" th:text="${vo.news.likeCount}"></i>
+                                <i class="vote-arrow"></i>
                             </button>
                             <button class="click-dislike down" th:attr="data-id=${vo.news.id}" 
                                     title="反对" th:if="${like <= 0}">
-                                <i class="vote-arrow" th:text="${vo.news.likeCount}"></i>
+                                <i class="vote-arrow" ></i>
                             </button>
                         </div>
                         <div class="content" data-url="http://nowcoder.com/posts/5l3hjr">
@@ -45,7 +45,7 @@
                             <div class="content-main">
                                 <h3 class="title">  <!--${vo.news.link}-->
                                     <a target="_blank" rel="external nofollow"
-                                       th:href="@{/news/${vo.news.id}}" th:text="${vo.news.title}"></a>
+                                       th:href="@{'/news/'+${vo.news.id}}" th:text="${vo.news.title}"></a>
                                 </h3>
                                 <div class="meta" >
                                     <span>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="user-info">
                             <div class="user-avatar">             -
-                                <a th:href="@{/user/${vo.user.id}/}" ><img width="32" class="img-circle"
+                                <a th:href="@{'/news/'+${vo.news.id}}" ><img width="32" class="img-circle"
                                                                        th:if="${vo.user != null}"  th:src="@{${vo.user.headUrl}}"></a>
                             </div>
 
