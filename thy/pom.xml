@@ -76,6 +76,18 @@
 			<version>7.2.6</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<!-- 微信解析  xml数据 -->
+		<dependency>
+		    <groupId>dom4j</groupId>
+		    <artifactId>dom4j</artifactId>
+		    <version>1.6.1</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>com.thoughtworks.xstream</groupId>
+		    <artifactId>xstream</artifactId>
+		    <version>1.4.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
