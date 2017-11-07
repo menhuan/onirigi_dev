@@ -1,6 +1,5 @@
 package manage.thy.util;
 
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Writer;
@@ -20,7 +19,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 
-import manage.thy.model.wechat.res.ArticleResMessage;
+import manage.thy.model.wechat.res.Article;
 import manage.thy.model.wechat.res.NewsMessage;
 import manage.thy.model.wechat.res.TextResMessage;
 
@@ -161,7 +160,7 @@ public class MessageUtil {
      */
     public static String messageToXml(NewsMessage newsMessage){
     	xStream.alias("xml", newsMessage.getClass());
-    	xStream.alias("item", new ArticleResMessage().getClass());
+    	xStream.alias("item", new Article().getClass());
     	return xStream.toXML(newsMessage);
     }
     

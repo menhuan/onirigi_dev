@@ -1,5 +1,7 @@
 package com.test.demo.base;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * 读取配置文件中的 数据
  * @author ASUS
@@ -8,4 +10,6 @@ package com.test.demo.base;
  */
 public class BaseConfigFile {
 
+	
+	
 }
