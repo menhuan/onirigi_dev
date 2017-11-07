@@ -7,15 +7,16 @@ package manage.thy.model.wechat.res;
  */
 public class VoiceRes{
 
-	private String voice ;
+	private Voice voice ;
 
-	public String getVoice() {
+	public Voice getVoice() {
 		return voice;
 	}
 
-	public void setVoice(String voice) {
+	public void setVoice(Voice voice) {
 		this.voice = voice;
 	}
+
 	
 	
 }

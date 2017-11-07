@@ -4,9 +4,15 @@ import java.util.List;
 
 public class NewsMessage extends BaseResMessage {
 
+	/**
+	 * 图文消息个数 限制为10条以内
+	 */
 	private int ArticleCount ;
 	
-	private List<ArticleResMessage> ariticles;
+	/**
+	 * 多条图文消息 默认第一个item为大图
+	 */
+	private List<Article> Articles;
 
 	public int getArticleCount() {
 		return ArticleCount;
@@ -16,15 +22,14 @@ public class NewsMessage extends BaseResMessage {
 		ArticleCount = articleCount;
 	}
 
-	public List<ArticleResMessage> getAriticles() {
-		return ariticles;
+	public List<Article> getArticles() {
+		return Articles;
 	}
 
-	public void setAriticles(List<ArticleResMessage> ariticles) {
-		this.ariticles = ariticles;
+	public void setArticles(List<Article> articles) {
+		Articles = articles;
 	}
-	
-	
+
 	
 	
 }

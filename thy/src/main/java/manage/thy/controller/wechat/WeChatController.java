@@ -41,7 +41,6 @@ public class WeChatController {
 	 */
 	@RequestMapping(value = "connect",method = {RequestMethod.GET,RequestMethod.POST})
 	public void connectWeChat(HttpServletRequest request,HttpServletResponse response){
-		logger.info("进来链接");
 		try {
 			 // 将请求、响应的编码均设置为UTF-8（防止中文乱码）  
 	        request.setCharacterEncoding("UTF-8");  //微信服务器POST消息时用的是UTF-8编码，在接收时也要用同样的编码，否则中文会乱码；
@@ -63,7 +62,7 @@ public class WeChatController {
 	            // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败 
 	            String  DNBX_TOKEN = "123123";
 	            if (SignUtil.checkSign(DNBX_TOKEN, signature, timestamp, nonce)) {  
-	            	logger.info("验证成功");
+	        
 	                response.getWriter().write(echostr);  
 	            } else {  
 	            	logger.info("验证失败");
@@ -74,6 +73,7 @@ public class WeChatController {
 	            try {
 	            	respMessage = weChatService.weChatPost(request);
 	                out.write(respMessage);
+	            	logger.info("respMessage:"+respMessage);
 	            } catch (Exception e) {
 	            	logger.info("验证异常",e);
 	            }

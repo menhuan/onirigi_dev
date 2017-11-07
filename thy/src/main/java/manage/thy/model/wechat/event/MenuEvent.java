@@ -7,15 +7,15 @@ package manage.thy.model.wechat.event;
  */
 public class MenuEvent extends BaseWeChatEvent {
 
-	private String eventKey;
+	private String EventKey;
 
 	public String getEventKey() {
-		return eventKey;
+		return EventKey;
 	}
 
 	public void setEventKey(String eventKey) {
-		this.eventKey = eventKey;
+		EventKey = eventKey;
 	}
-	
+
 	
 }

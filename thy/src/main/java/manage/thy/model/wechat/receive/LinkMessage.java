@@ -5,7 +5,7 @@ public class LinkMessage extends BaseWeChatMessage{
 	/**
 	 * 消息标题
 	 */
-	private String title;
+	private String Title;
 	
 	/**
 	 * 消息描述
@@ -16,31 +16,36 @@ public class LinkMessage extends BaseWeChatMessage{
 	/**
 	 * 消息链接
 	 */
-	private String url ;
+	private String Url ;
+
 
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 
+
 	public void setTitle(String title) {
-		this.title = title;
+		Title = title;
 	}
+
 
 	public String getDescription() {
 		return Description;
 	}
+
 
 	public void setDescription(String description) {
 		Description = description;
 	}
 
 	public String getUrl() {
-		return url;
+		return Url;
 	}
 
 	public void setUrl(String url) {
-		this.url = url;
+		Url = url;
 	}
+
 	
 	
 }

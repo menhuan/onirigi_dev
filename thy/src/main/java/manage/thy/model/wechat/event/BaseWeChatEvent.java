@@ -6,56 +6,55 @@ package manage.thy.model.wechat.event;
  */
 public class BaseWeChatEvent {
 
-	private String toUserName ;
+	private String ToUserName ;
 
-	private String fromUserName ;
+	private String FromUserName ;
 
-	private long createTime ;
+	private long CreateTime ;
 	
-	private String msgType;
+	private String MsgType;
 	
-	private String event;
+	private String Event;
 
 	public String getToUserName() {
-		return toUserName;
+		return ToUserName;
 	}
 
 	public void setToUserName(String toUserName) {
-		this.toUserName = toUserName;
+		ToUserName = toUserName;
 	}
 
 	public String getFromUserName() {
-		return fromUserName;
+		return FromUserName;
 	}
 
 	public void setFromUserName(String fromUserName) {
-		this.fromUserName = fromUserName;
+		FromUserName = fromUserName;
 	}
 
 	public long getCreateTime() {
-		return createTime;
+		return CreateTime;
 	}
 
 	public void setCreateTime(long createTime) {
-		this.createTime = createTime;
+		CreateTime = createTime;
 	}
 
 	public String getMsgType() {
-		return msgType;
+		return MsgType;
 	}
 
 	public void setMsgType(String msgType) {
-		this.msgType = msgType;
+		MsgType = msgType;
 	}
 
 	public String getEvent() {
-		return event;
+		return Event;
 	}
 
 	public void setEvent(String event) {
-		this.event = event;
+		Event = event;
 	}
-	
-	
+
 	
 }

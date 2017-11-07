@@ -3,46 +3,48 @@ package manage.thy.model.wechat.res;
 public class Music  {
 
 	  // 音乐标题
-    private String title;
+    private String Title;
     // 音乐描述
-    private String description;
+    private String Description;
     // 音乐链接
-    private String musicUrl;
+    private String MusicUrl;
     // 高质量音乐链接，WIFI环境优先使用该链接播放音乐
-    private String hqmusicUrl;
+    private String HqmusicUrl;
     // 缩略图的媒体id，通过上传多媒体文件得到的id
-    private String thumbMediaId;
+    private String ThumbMediaId;
+    
     
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 	public void setTitle(String title) {
-		this.title = title;
+		Title = title;
 	}
 	public String getDescription() {
-		return description;
+		return Description;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		Description = description;
 	}
 	public String getMusicUrl() {
-		return musicUrl;
+		return MusicUrl;
 	}
 	public void setMusicUrl(String musicUrl) {
-		this.musicUrl = musicUrl;
+		MusicUrl = musicUrl;
 	}
 	public String getHqmusicUrl() {
-		return hqmusicUrl;
+		return HqmusicUrl;
 	}
 	public void setHqmusicUrl(String hqmusicUrl) {
-		this.hqmusicUrl = hqmusicUrl;
+		HqmusicUrl = hqmusicUrl;
 	}
 	public String getThumbMediaId() {
-		return thumbMediaId;
+		return ThumbMediaId;
 	}
 	public void setThumbMediaId(String thumbMediaId) {
-		this.thumbMediaId = thumbMediaId;
+		ThumbMediaId = thumbMediaId;
 	}
+    
 	
     
 }

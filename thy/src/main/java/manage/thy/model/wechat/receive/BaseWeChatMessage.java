@@ -10,7 +10,7 @@ public class BaseWeChatMessage {
 	/**
 	 * 开发者微信号  。。消息发送给谁
 	 */
-	private String toUserName ;
+	private String ToUserName ;
 	
 	/**
 	 * 发送方的账号 openId  确定之后可以更改熟悉的代码
@@ -20,24 +20,24 @@ public class BaseWeChatMessage {
 	/**
 	 * 消息创建时间
 	 */
-	private long createTime ;
+	private long CreateTime ;
 
 	/**
 	 * 消息类型（text/image /location/link）
 	 */
-	private String msgType ;
+	private String MsgType ;
 
 	/**
 	 * 消息id  64位整型
 	 */
-	private long msgId ;
+	private long MsgId ;
 
 	public String getToUserName() {
-		return toUserName;
+		return ToUserName;
 	}
 
 	public void setToUserName(String toUserName) {
-		this.toUserName = toUserName;
+		ToUserName = toUserName;
 	}
 
 	public String getFromUserName() {
@@ -49,28 +49,29 @@ public class BaseWeChatMessage {
 	}
 
 	public long getCreateTime() {
-		return createTime;
+		return CreateTime;
 	}
 
 	public void setCreateTime(long createTime) {
-		this.createTime = createTime;
+		CreateTime = createTime;
 	}
 
 	public String getMsgType() {
-		return msgType;
+		return MsgType;
 	}
 
 	public void setMsgType(String msgType) {
-		this.msgType = msgType;
+		MsgType = msgType;
 	}
 
 	public long getMsgId() {
-		return msgId;
+		return MsgId;
 	}
 
 	public void setMsgId(long msgId) {
-		this.msgId = msgId;
+		MsgId = msgId;
 	}
+
 	
 	
 }

@@ -3,15 +3,16 @@ package manage.thy.model.wechat.res;
 public class ImageResMessage  extends BaseResMessage{
 
 	
-	private ImageRes  imageRes ;
+	private ImageRes  ImageRes ;
 
 	public ImageRes getImageRes() {
-		return imageRes;
+		return ImageRes;
 	}
 
 	public void setImageRes(ImageRes imageRes) {
-		this.imageRes = imageRes;
+		ImageRes = imageRes;
 	}
+	
 	
 	
 }

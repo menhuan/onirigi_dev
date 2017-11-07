@@ -44,7 +44,7 @@ public class WeChatService {
 			String content = requestMap.get("Content");
 			
 			resMessage=this.replyToContentByType(msgType,fromUserName,toUserName);
-			
+			LOGGER.info("resMessage:"+resMessage);
 		} catch (Exception e) {
 			LOGGER.error("微信post出错",e);
 		}
@@ -87,6 +87,8 @@ public class WeChatService {
 		textResMessage.setFromUserName(toUserName);
 		textResMessage.setToUserName(fromUserName);
 		textResMessage.setMsgType(msgType);
+		textResMessage.setCreateTime(System.currentTimeMillis());
+		
 	
 		String resMessage = MessageUtil.messageToXml(textResMessage);
 		return  resMessage ;

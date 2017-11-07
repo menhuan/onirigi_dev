@@ -11,7 +11,7 @@ public class LocationEvent extends BaseWeChatEvent {
 	
 	private String Longitude ;
 	
-	private String precision;
+	private String Precision;
 
 	public String getLatitude() {
 		return Latitude;
@@ -30,12 +30,12 @@ public class LocationEvent extends BaseWeChatEvent {
 	}
 
 	public String getPrecision() {
-		return precision;
+		return Precision;
 	}
 
 	public void setPrecision(String precision) {
-		this.precision = precision;
+		Precision = precision;
 	}
-	
+
 	
 }

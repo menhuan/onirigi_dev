@@ -7,24 +7,25 @@ import manage.thy.model.wechat.receive.BaseWeChatMessage;
  * @author dell
  *
  */
-public class VoiceMessage extends BaseWeChatMessage {
+public class Voice extends BaseWeChatMessage {
 	
 	/**
 	 *  媒体ID
 	 */
-	private String mediaId;	
+	private String MediaId;	
 	
 	/**
 	 * 语音格式
 	 */
 	private String Format ;
 
+
 	public String getMediaId() {
-		return mediaId;
+		return MediaId;
 	}
 
 	public void setMediaId(String mediaId) {
-		this.mediaId = mediaId;
+		MediaId = mediaId;
 	}
 
 	public String getFormat() {

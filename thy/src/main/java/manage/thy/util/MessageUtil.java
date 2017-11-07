@@ -120,7 +120,7 @@ public class MessageUtil {
     			
     			protected void writeText(QuickWriter writer, String text) {
     				if(cdata){
-    					writer.write("<![cdata[");
+    					writer.write("<![CDATA[");
     					writer.write(text);
     					writer.write("]]>");
     				}else{

@@ -9,29 +9,28 @@ public class QRCodeEvent extends BaseWeChatEvent {
 	/**
 	 * 事件Key值
 	 */
-	private String eventKey;
+	private String EventKey;
 	
 	/**
 	 * 用于换取二维码图片
 	 */
-	private String ticket;
+	private String Ticket;
 
 	public String getEventKey() {
-		return eventKey;
+		return EventKey;
 	}
 
 	public void setEventKey(String eventKey) {
-		this.eventKey = eventKey;
+		EventKey = eventKey;
 	}
 
 	public String getTicket() {
-		return ticket;
+		return Ticket;
 	}
 
 	public void setTicket(String ticket) {
-		this.ticket = ticket;
+		Ticket = ticket;
 	}
-	
-	
+
 	
 }

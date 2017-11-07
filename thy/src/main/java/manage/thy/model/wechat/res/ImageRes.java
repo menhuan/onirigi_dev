@@ -7,15 +7,15 @@ package manage.thy.model.wechat.res;
  */
 public class ImageRes {
 
-	private String mediaId ;
+	private String MediaId ;
 
 	public String getMediaId() {
-		return mediaId;
+		return MediaId;
 	}
 
 	public void setMediaId(String mediaId) {
-		this.mediaId = mediaId;
+		MediaId = mediaId;
 	}
-	
+
 	
 }
