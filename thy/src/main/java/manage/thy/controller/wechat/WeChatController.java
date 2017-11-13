@@ -16,9 +16,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSONObject;
+
 import manage.thy.model.wechat.pay.PayWeBean;
 import manage.thy.service.WeChatService;
+import manage.thy.util.BaseUtil;
 import manage.thy.util.MessageUtil;
+import manage.thy.util.RestHttpClient;
+import manage.thy.util.RestRequestClient;
 import manage.thy.util.SignUtil;
 
 
@@ -182,26 +187,45 @@ public class WeChatController {
 			String xml = MessageUtil.messageToXml(bean);
 			
 			// 提交到微信的统一下单接口上
-			String content = "" ;
+			RestRequestClient  rest  =new RestRequestClient() ;
+			String content = rest.restSubmitString(BaseUtil.WECHAT_UNIFORMORDER, xml) ;
 			
-//			result.put("appid", appid);
-//			result.put("mch_id", MCHID);
-//			result.put("nonce_str", 123123);
-//			result.put("body", subject);
-//			result.put("out_trade_no", orderNum);  //商户订单编号
-//			result.put("total_fee", BigDecimal.valueOf(Long.valueOf(money))
-//					.multiply(new BigDecimal(100)).toString());
-//			result.put("spbill_create_ip", "127.0.0.1");  //消费者ip地址
-//			result.put("notify_url", NOTIFYURL);  //回调地址
-//			result.put("trade_type", TRADETYPE);
+			boolean success=weChatService.checkWeChatSuccess(content);
 			
-			
+			if(success) {
+				return "成功";
+			}else {
+				return "FAIL";
+			}
 			
 		} catch (Exception e) {
 			logger.error("统一下单出现问题" , e);
 		}
 		
 		return  null ;
+	}
+	
+	/**
+	 * 微信订单 回调接口
+	 * @author ASUS
+	 * 创建时间  2017年11月13日 下午10:02:05
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "/notify" ,method = RequestMethod.POST)
+	public void notify(HttpServletRequest request ,HttpServletResponse response) {
+		
+		try {
+		  request.setCharacterEncoding("UTF-8");    
+          response.setCharacterEncoding("UTF-8");    
+          response.setContentType("text/html;charset=UTF-8");    
+          response.setHeader("Access-Control-Allow-Origin", "*");
+			
+			
+		} catch (Exception e) {
+			logger.error("微信订单回调 失败。。",e);
+		}
+		
 	}
 	
 	

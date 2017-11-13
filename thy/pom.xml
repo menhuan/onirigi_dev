@@ -44,19 +44,6 @@
 			<artifactId>okhttp</artifactId>
 			<version>3.8.1</version>
 		</dependency>
-		
-		<!-- 需要先将两个jar包 打包在maven中 -->
-		<dependency>
-			<groupId>org.eclipse.aether</groupId>
-			<artifactId>aliyun-java-sdk-core</artifactId>
-			<version>3.31</version>
-		</dependency>
-		
-		<dependency>
-			 <groupId>org.eclipse.aether</groupId>
-  			 <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 
 		<!-- json -->
 		<dependency>
@@ -100,6 +87,20 @@
 		    <groupId>com.thoughtworks.xstream</groupId>
 		    <artifactId>xstream</artifactId>
 		    <version>1.4.6</version>
+		</dependency>
+		
+			
+		<!-- 需要先将两个jar包 打包在maven中 -->
+		<dependency>
+			<groupId>org.eclipse.aether</groupId>
+			<artifactId>aliyun-java-sdk-core</artifactId>
+			<version>3.31</version>
+		</dependency>
+		
+		<dependency>
+			 <groupId>org.eclipse.aether</groupId>
+  			 <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 

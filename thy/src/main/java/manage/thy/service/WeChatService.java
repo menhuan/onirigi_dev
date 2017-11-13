@@ -8,7 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
+
 import manage.thy.model.wechat.res.TextResMessage;
+import manage.thy.util.ConditionUtil;
 import manage.thy.util.MessageUtil;
 
 
@@ -92,6 +95,29 @@ public class WeChatService {
 	
 		String resMessage = MessageUtil.messageToXml(textResMessage);
 		return  resMessage ;
+		
+	}
+	
+	/**
+	 * 检查统一下单是否成功
+	 * @author ASUS
+	 * 创建时间  2017年11月13日 下午9:42:26
+	 * @return  
+	 * @throws Exception 
+	 */
+	public boolean checkWeChatSuccess(String content) throws Exception{
+		
+		JSONObject	object = MessageUtil.parseXMLtoJson(content);
+		JSONObject  contentXML = object.getJSONObject("xml");
+		String resultCode = contentXML.getString("result_code");
+		
+		if(ConditionUtil.WECHAT_SUCCESS_CODE.equalsIgnoreCase(resultCode)) {
+			return true;
+		}else if (ConditionUtil.WECHAT_FAILE_CODE.equalsIgnoreCase(resultCode)) {
+			return false;
+		}
+		
+		return false;
 		
 	}
 	

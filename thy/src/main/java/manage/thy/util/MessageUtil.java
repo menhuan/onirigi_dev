@@ -1,7 +1,9 @@
 package manage.thy.util;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
@@ -9,10 +11,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.alibaba.fastjson.JSONObject;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
@@ -163,5 +167,41 @@ public class MessageUtil {
     	xStream.alias("item", new Article().getClass());
     	return xStream.toXML(newsMessage);
     }
+     
+    /**
+     * 将xml内容解析为json
+     * @author ASUS
+     * 创建时间  2017年11月13日 下午9:07:25
+     * @param xml
+     * @return
+     * @throws Exception  
+     */
+    public static JSONObject parseXMLtoJson(String xml) throws Exception {
+    	JSONObject obj = new JSONObject();    
+	    InputStream is = new ByteArrayInputStream(xml.getBytes("utf-8"));    
+        SAXReader sb = new SAXReader();    
+        Document doc = sb.read(is);    
+        Element root = doc.getRootElement();    
+        obj.put(root.getName(), iterateElement(root));    
+        return obj;    
+    }
+
+    /**
+     * 遍历 xml中的节点解析数据  直解析一层数据 不包含子节点下面的子节点信息
+     * @author ASUS
+     * 创建时间  2017年11月13日 下午9:11:20
+     * @param root
+     * @return
+     */
+	private static Map iterateElement(Element root) {
+
+		List<Element>	elements = root.elements();
+		Map<String ,String > result = new HashMap<String ,String>();
+		for(Element element : elements) {
+			result.put(element.getName(),element.getText());  
+		}
+		
+		return result;
+	}
     
 }

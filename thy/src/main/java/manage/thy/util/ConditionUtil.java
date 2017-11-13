@@ -44,6 +44,17 @@ public class ConditionUtil {
      * 增加分享信息失败
      */
     public static final String ADD_USER_NEWS_FALSE ="增加分享信息失败";
+    
+    /********************************微信变量**********************************/
 
+    /**
+     * 失败
+     */
+    public static final String WECHAT_FAILE_CODE = "FAIL";
+    
+    /**
+     * 成功
+     */
+    public static final String WECHAT_SUCCESS_CODE = "SUCCESS";
 
 }

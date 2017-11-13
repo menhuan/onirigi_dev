@@ -21,5 +21,7 @@ public class ConditionBase {
      */
     public static final  Integer NEW_BEAN_COMMENT_COUNT=0;
 
+    
+    
 
 }

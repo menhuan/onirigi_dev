@@ -76,4 +76,24 @@ public class RestRequestClient {
         LinkedHashMap responseMap = (LinkedHashMap) response.getBody();
         return responseMap;
     }
+    
+    /**
+     * 提交String类型参数
+     * @author ASUS
+     * 创建时间  2017年11月13日 下午8:59:34
+     * @param url
+     * @param obj
+     * @return
+     */
+    public String restSubmitString(String url, String obj) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
+        headers.set("Accept-Charset", "UTF-8");
+        HttpEntity entity = new HttpEntity(obj, headers);
+        ResponseEntity response = restTemplate.exchange(url, HttpMethod.POST, entity, Map.class);
+        String resutlt = (String) response.getBody();
+        return resutlt;
+    }
 }

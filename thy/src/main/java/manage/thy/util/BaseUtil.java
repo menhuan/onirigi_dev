@@ -73,6 +73,10 @@ public class BaseUtil {
     public static final  String DISLIKE_ADD_NUM =BASE_URL+"likeRest/dislike";
 
 
-
-
+    /*********************************************微信相关的链接***********************************************/
+    
+    /**
+     * 微信统一下单
+     */
+    public static final String WECHAT_UNIFORMORDER = "https://api.mch.weixin.qq.com/pay/unifiedorder";  
 }
