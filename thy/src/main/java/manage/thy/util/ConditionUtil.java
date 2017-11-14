@@ -57,4 +57,8 @@ public class ConditionUtil {
      */
     public static final String WECHAT_SUCCESS_CODE = "SUCCESS";
 
+    
+    /*******************************图灵机器人apikey **************************/
+    
+    public static final String TULING_API_KEY = "fa6f37b6ecd3ee590a28eeaf79ec3efc";
 }

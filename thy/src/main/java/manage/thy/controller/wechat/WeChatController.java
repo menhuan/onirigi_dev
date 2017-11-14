@@ -1,5 +1,7 @@
 package manage.thy.controller.wechat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.SortedMap;
@@ -193,6 +195,10 @@ public class WeChatController {
 			boolean success=weChatService.checkWeChatSuccess(content);
 			
 			if(success) {
+				JSONObject	object = MessageUtil.parseXMLtoJson(content);
+				JSONObject  contentXML = object.getJSONObject("xml");
+				String prepayId =contentXML.getString("prepay_id");
+				
 				return "成功";
 			}else {
 				return "FAIL";
@@ -220,8 +226,18 @@ public class WeChatController {
           response.setCharacterEncoding("UTF-8");    
           response.setContentType("text/html;charset=UTF-8");    
           response.setHeader("Access-Control-Allow-Origin", "*");
-			
-			
+          
+         
+          String content=weChatService.getContentFromStream(request);//xml数据    
+		  boolean isSuccess = weChatService.checkWeChatSuccess(content);
+		  if(isSuccess) {
+			  String result = weChatService.parse(content, "out_trade_no");
+			  System.out.println("成果的结果订单号是："+result);
+			  response.getWriter().write(weChatService.setXml("SUCCESS", "OK"));
+		  }else {
+			System.out.println("失败");
+		  }
+		
 		} catch (Exception e) {
 			logger.error("微信订单回调 失败。。",e);
 		}

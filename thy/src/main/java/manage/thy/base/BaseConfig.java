@@ -42,5 +42,10 @@ public class BaseConfig {
 	public String smsAddressSend ;
 	
 	
+	/**
+	 * 图灵机器人apiKey
+	 */
+	@Value("${tuling.robot.api.key}")
+	public String tulingRobotApiKey;
 	
 }

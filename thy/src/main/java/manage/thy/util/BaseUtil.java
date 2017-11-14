@@ -79,4 +79,11 @@ public class BaseUtil {
      * 微信统一下单
      */
     public static final String WECHAT_UNIFORMORDER = "https://api.mch.weixin.qq.com/pay/unifiedorder";  
+
+
+    /**********************************************图灵机器人***************************************************/
+    
+    public static final String TULING_ROBOT_API = "http://www.tuling123.com/openapi/api";
 }
+
+
