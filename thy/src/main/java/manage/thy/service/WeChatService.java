@@ -54,7 +54,7 @@ public class WeChatService {
 			String msgType = requestMap.get("MsgType");
 			String content = requestMap.get("Content");
 			
-			resMessage=this.replyToContentByType(msgType,fromUserName,toUserName);
+			resMessage=this.replyToContentByType(msgType,fromUserName,toUserName ,content);
 			LOGGER.info("resMessage:"+resMessage);
 		} catch (Exception e) {
 			LOGGER.error("微信post出错",e);
@@ -68,9 +68,11 @@ public class WeChatService {
 	 * @author ASUS
 	 * 创建时间  2017年10月31日 下午9:07:39
 	 * @param msgType  收到的文本内容类型
+	 * @param content  对方发过来的内容
 	 * @return
 	 */
-	public String  replyToContentByType(String msgType,String fromUserName , String toUserName) {
+	public String  replyToContentByType(String msgType,String fromUserName , String toUserName
+			, String content ) {
 		
 		String resMessage = null ;
 		
@@ -79,9 +81,9 @@ public class WeChatService {
 		 */
 		if(MessageUtil.REQ_MESSAGE_TYPE_TEXT.equals(msgType)) {
 			
+			String result = robotService.getResponseRobot(content,fromUserName , "");
 			
-			
-			resMessage =this.replyToText(msgType, fromUserName , toUserName," ");
+			resMessage =this.replyToText(msgType, fromUserName , toUserName,result);
 			return resMessage ;
 		}
 		
@@ -100,7 +102,8 @@ public class WeChatService {
 	 * 创建时间  2017年10月31日 下午9:16:50
 	 * @return
 	 */
-	public String replyToText(String msgType ,String fromUserName , String toUserName ,String content ) {
+	public String replyToText(String msgType ,String fromUserName 
+			, String toUserName ,String content ) {
 		TextResMessage textResMessage  = new TextResMessage();
 		textResMessage.setContent(content);
 		textResMessage.setFromUserName(toUserName);
@@ -186,6 +189,5 @@ public class WeChatService {
 	public static String setXml(String return_code,String return_msg){    
          return "<xml><return_code><![CDATA["+return_code+"]]></return_code><return_msg><![CDATA["+return_msg+"]]></return_msg></xml>";    
 	}    
- }    
+}    
 	
-}
