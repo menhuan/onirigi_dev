@@ -43,9 +43,15 @@ public class RobotService<T>  extends BaseConfig{
 	public String getResponseRobot(String content ,String userId ,String loc) {
 		String  json =this.toJson(content, userId, loc);
 		RestRequestClient rest =new RestRequestClient() ;
-		String result = rest.restSubmitString(BaseUtil.TULING_ROBOT_API, json);
+		try {
+			String result = rest.restSubmitString(BaseUtil.TULING_ROBOT_API, json);
+			return  JSON.toJSONString(this.parseContenttoBean(result));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return  JSON.toJSONString(this.parseContenttoBean(result));
+		return "" ;
 
 	}	
 

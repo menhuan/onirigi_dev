@@ -2,9 +2,14 @@ package manage.thy.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+
+import manage.thy.model.wechat.res.NewsMessage;
+
 import org.springframework.http.*;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -85,14 +90,14 @@ public class RestRequestClient {
      * @param obj
      * @return
      */
-    public String restSubmitString(String url, String obj) {
-
+    public String restSubmitString(String url, String obj) throws Exception{
+    	StringHttpMessageConverter m = new StringHttpMessageConverter(Charset.forName("UTF-8"));  
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
+        headers.setContentType(MediaType.parseMediaType("application/json; charset=UTF-8"));
         headers.set("Accept-Charset", "UTF-8");
         HttpEntity entity = new HttpEntity(obj, headers);
-        ResponseEntity response = restTemplate.exchange(url, HttpMethod.POST, entity, Map.class);
+        ResponseEntity response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
         String resutlt = (String) response.getBody();
         return resutlt;
     }
