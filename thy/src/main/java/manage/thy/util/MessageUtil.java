@@ -204,7 +204,5 @@ public class MessageUtil {
 		return result;
 	}
 	
-	
-	public 
     
 }
