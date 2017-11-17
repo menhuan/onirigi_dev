@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.test.demo.service.ReptileService;
 import com.test.demo.service.impl.ReptileServiceImpl;
+import com.test.demo.task.JobExecuteSub;
 
 /**
  * 定时任务 这个写完之后研究下 定时任务改造 或者用开源框架
@@ -15,7 +16,7 @@ import com.test.demo.service.impl.ReptileServiceImpl;
  *
  */
 @Component
-public class KrHtmlJob {
+public class KrHtmlJob  implements JobExecuteSub{
 
 	private static final Logger Logger = LoggerFactory.getLogger(KrHtmlJob.class);
 	
@@ -37,6 +38,11 @@ public class KrHtmlJob {
 		reptileServiceImpl.reptileHtml();
 		
 		
+	}
+
+	@Override
+	public void run() throws Exception {
+		this.parseHtml();
 	}
 	
 }

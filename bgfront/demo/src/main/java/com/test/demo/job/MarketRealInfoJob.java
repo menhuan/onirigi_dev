@@ -20,6 +20,7 @@ import com.test.demo.base.BaseCofig;
 import com.test.demo.base.BaseUrl;
 import com.test.demo.bean.MarketRealInfoBean;
 import com.test.demo.service.MarketRealInfoService;
+import com.test.demo.task.JobExecuteSub;
 import com.test.demo.util.DateUtil;
 import com.test.demo.util.RestHttpClient;
 
@@ -30,7 +31,7 @@ import com.test.demo.util.RestHttpClient;
  *
  */
 @Component
-public class MarketRealInfoJob {
+public class MarketRealInfoJob  implements JobExecuteSub {
 
 	private Logger Logger =LoggerFactory.getLogger(MarketRealInfoJob.class);
 	
@@ -47,7 +48,7 @@ public class MarketRealInfoJob {
 	 * 创建时间  2017年8月27日 下午8:10:34
 	 */
 	@SuppressWarnings({ "all" })
-	public void execute() {
+	public void execute() throws Exception {
 		
 		boolean isCycle =true;
 		
@@ -104,6 +105,11 @@ public class MarketRealInfoJob {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	public void run() throws Exception {
+		this.execute();
 	}
 	
 }

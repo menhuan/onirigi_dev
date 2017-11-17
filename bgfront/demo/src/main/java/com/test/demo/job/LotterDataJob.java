@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.test.demo.service.LotterDataService;
+import com.test.demo.task.JobExecuteSub;
 
 
 /**
@@ -15,7 +16,7 @@ import com.test.demo.service.LotterDataService;
  *
  */
 @Component
-public class LotterDataJob {
+public class LotterDataJob   implements JobExecuteSub{
 	
 	/**
 	 * 日志
@@ -31,6 +32,7 @@ public class LotterDataJob {
 	/**
 	 * 这里面写运行的内容
 	 */
+	@Override
 	public void run() {
 
 		logger.info("彩赚-----进入彩票数据获取-----");
