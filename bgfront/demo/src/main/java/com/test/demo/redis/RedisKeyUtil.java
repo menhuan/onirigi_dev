@@ -18,6 +18,15 @@ public class RedisKeyUtil {
 	 */
 	public static final String REDIS_LIST_FAILED_HTML_KEY = "redis_list_success_kr_html_key";
 	
+	/**
+	 * 代理ip列表 
+	 */
+	public static final String REDIS_PROXY_IP_LIST ="redis_proxy_ip_list" ;
+	
+	/**
+	 * ip更新时间
+	 */
+	public static final String REDIS_PROXY_IP_TIME = "redis_proxy_ip_time" ;
 	
 	/**
 	 * 分隔符

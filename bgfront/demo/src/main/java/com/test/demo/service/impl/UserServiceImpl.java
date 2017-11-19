@@ -57,7 +57,8 @@ public class UserServiceImpl implements UserService {
 		date.setTime(date.getTime() + BaseCofig.SESSION_EXPIRED_SHORT_LONG);
 		bean.setExpireDate(date);
 		bean.setStatus(BaseCofig.LOGIN_TICKEN_TRUE_STATUS);
-		bean.setTicket(UUID.randomUUID().toString().replace("-", "")); // 相当于cook的值
+		// 相当于cook的值
+		bean.setTicket(UUID.randomUUID().toString().replace("-", "")); 
 		loginTicketDao.addTicket(bean);
 
 		// 返回ticket 的内容

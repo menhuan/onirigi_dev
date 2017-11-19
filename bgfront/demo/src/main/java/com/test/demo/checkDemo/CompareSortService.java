@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 public class CompareSortService implements Comparator<File> {
 
+	@Override
 	public int compare(File file1, File file2) {
 		
 		long fileTime1=file1.lastModified();
@@ -16,8 +17,10 @@ public class CompareSortService implements Comparator<File> {
 		else  if(fileTime1==fileTime2){
 			return 0;
 		}
-		else  
+		else  {
+			
 			return -1;
+		}
 		
 	}
 

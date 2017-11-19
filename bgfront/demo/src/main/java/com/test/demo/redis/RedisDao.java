@@ -124,6 +124,19 @@ public class RedisDao {
 		return redisTemplate.opsForList().leftPush(key, value);
 	}
 	
+	
+	/**
+	 * 向redis中插入集合数据
+	 * @author ASUS
+	 * 创建时间  2017年11月19日 下午4:40:16
+	 * @param key
+	 * @param values
+	 * @return
+	 */
+	public long lpushList(String key,List<String> values) {
+		return redisTemplate.opsForList().rightPushAll(key, values);
+	}
+	
 	/**
 	 * 从队列中取出数据
 	 * @author ASUS

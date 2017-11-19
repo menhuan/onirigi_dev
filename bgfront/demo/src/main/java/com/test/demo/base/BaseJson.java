@@ -42,7 +42,9 @@ public class BaseJson {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map returnSuccessInfo(Map linkedHashMap) {
 		Map result = new LinkedHashMap(5);
-		result.put("success", SUCCESS_CODE);// 1成功
+		
+		//成功
+		result.put("success", SUCCESS_CODE);
 		result.put("successResult", linkedHashMap);
 		return result;
 	}

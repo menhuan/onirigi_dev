@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @author dell
  *
  */
-public class Proxy implements Delayed   {
+public class ProxyBean implements Delayed   {
 
 	/**
 	 * 任务时间间隔 ， 单位 ms  
@@ -56,7 +56,7 @@ public class Proxy implements Delayed   {
 	 */
 	private double successFulAverageTime ;
 	
-	public Proxy(String ip , int port , long timeInterval){
+	public ProxyBean(String ip , int port , long timeInterval){
 		this.ip = ip ;
 		this.port = port ;
 		this.timeInterval = timeInterval ;
@@ -152,7 +152,7 @@ public class Proxy implements Delayed   {
 	@Override
 	public int compareTo(Delayed o) {
 		
-		Proxy element = (Proxy) o;
+		ProxyBean element = (ProxyBean) o;
 		if(successFulAverageTime == 0.0d ||
 				element.successFulAverageTime == 0.0d){
 			return 0;

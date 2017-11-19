@@ -40,12 +40,12 @@ public class BaseCofig {
 	/**
 	 * 分页小
 	 */
-	public static final int  minPage=0;
+	public static final int  MINPAGE=0;
 	
 	/**
 	 * 分页大
 	 */
-	public static final int maxPage=10;
+	public static final int MAXPAGE=10;
 
 	/**
 	 * 实体类型
