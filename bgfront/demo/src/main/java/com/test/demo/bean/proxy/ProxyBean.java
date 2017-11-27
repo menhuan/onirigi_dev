@@ -56,6 +56,10 @@ public class ProxyBean implements Delayed   {
 	 */
 	private double successFulAverageTime ;
 	
+	public ProxyBean(){
+		
+	}
+	
 	public ProxyBean(String ip , int port , long timeInterval){
 		this.ip = ip ;
 		this.port = port ;

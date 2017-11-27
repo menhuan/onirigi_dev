@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.test.demo.job.KrHtmlJob;
 import com.test.demo.job.LotterDataJob;
 import com.test.demo.job.MarketRealInfoJob;
+import com.test.demo.job.ProxyJob;
 
 
 /**
@@ -32,6 +33,9 @@ public class Task {
 	@Autowired
 	KrHtmlJob  krHtmlJob;
 	
+	@Autowired
+	ProxyJob  proxyJob;
+	
 	//@Scheduled(fixedRate=21600000)
 	public void runLotterTask() {
 		
@@ -50,6 +54,23 @@ public class Task {
 		//	krHtmlJob.parseHtml();
 		} catch (Exception e) {
 			log.error("爬虫失败",e);
+		}
+		
+	}
+	
+	/**
+	 * 运行代理查询
+	 * @author ASUS
+	 * 创建时间  2017年11月26日 下午2:07:16
+	 */
+//	@Scheduled(fixedDelay=10*60*1000)
+	public void runProParse() {
+		try {
+		//	proxyJob.runProxy();
+		//	krHtmlJob.parseHtml();
+		} catch (Exception e) {
+			log.error("爬虫失败",e);
+			this.runKrParse();
 		}
 		
 	}

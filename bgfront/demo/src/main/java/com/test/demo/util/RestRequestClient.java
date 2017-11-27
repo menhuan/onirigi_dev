@@ -13,6 +13,9 @@ import java.net.Proxy;
 import java.net.SocketAddress;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
+
+import static com.test.demo.util.ConstantsUtil.*;
 
 
 /**
@@ -109,8 +112,9 @@ public class RestRequestClient {
     	 SimpleClientHttpRequestFactory client = this.setHttpClientProxy(ip ,host);
     	 RestTemplate restTemplate = new RestTemplate(client);
          HttpHeaders headers = new HttpHeaders();
-         headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
-         headers.set("Accept-Charset", "UTF-8");
+         headers.set("User-Agent", USER_AGENT_ARRAY[new Random().nextInt(USER_AGENT_ARRAY.length)]  );
+//         headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
+//         headers.set("Accept-Charset", "UTF-8");
          HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
          ResponseEntity response = restTemplate.exchange(url,HttpMethod.GET, entity, String.class);
          String result = (String) response.getBody();
@@ -131,9 +135,11 @@ public class RestRequestClient {
     	
     	 RestTemplate restTemplate = new RestTemplate();
          HttpHeaders headers = new HttpHeaders();
-//         headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
-//         headers.set("Accept-Charset", "UTF-8");
+//         headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8")); 
+//         headers.set("Accept-Charset", "UTF-8");Constants.userAgentArray[new Random().nextInt(Constants.userAgentArray.length)]
+         headers.set("User-Agent", USER_AGENT_ARRAY[new Random().nextInt(USER_AGENT_ARRAY.length)]  );
          HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
+//         String result =restTemplate.getForObject(url, String.class);
          ResponseEntity response = restTemplate.exchange(url,HttpMethod.GET, entity, String.class);
          String result = (String) response.getBody();
          return result ;

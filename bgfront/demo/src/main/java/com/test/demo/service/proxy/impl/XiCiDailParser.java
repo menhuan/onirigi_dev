@@ -25,7 +25,7 @@ public class XiCiDailParser implements ProxyPageParser {
 	
 		for(Element element : elements){
 			String ip = element.select("td:eq(1)").first().text();
-			String port = element.select("td:eq(1)").first().text();
+			String port = element.select("td:eq(2)").first().text();
 			String isAnonymous = element.select("td:eq(4)").first().text();
 			
 			if(!ISOPEN_PROXY || isAnonymous.contains("匿")){

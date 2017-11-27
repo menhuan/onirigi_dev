@@ -32,4 +32,22 @@ public interface ProxyService {
 	 * @throws Exception
 	 */
 	public void addProxyBeans(String key ,List<String> values) throws Exception ;
+	
+	/**
+	 * 根据key 插入书库到redis中
+	 * @author ASUS
+	 * 创建时间  2017年11月26日 下午6:15:08
+	 * @param key
+	 * @param values
+	 * @throws Exception
+	 */
+	public void addProxyBean(String key ,String values) throws Exception  ;
+	
+	/**
+	 * 根据代理或者直连的方式采集内容
+	 * @author ASUS
+	 * 创建时间  2017年11月26日 下午5:13:01
+	 * @throws IllegalAccessException 
+	 */
+	public List<ProxyBean> getProxyBeans (ProxyBean bean) throws Exception ;
 }

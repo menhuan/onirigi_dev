@@ -71,7 +71,7 @@ public class MessageRest extends BaseJson{
 			int localUserId=(Integer) map.get("localUserId");
 			List<HashMap>  hashMaps =new ArrayList<>();
 			
-			List<MessageBean> converList =messageService.getConversationbList(localUserId, BaseCofig.minPage, BaseCofig.maxPage);
+			List<MessageBean> converList =messageService.getConversationbList(localUserId, BaseCofig.MINPAGE, BaseCofig.MAXPAGE);
 			
 			List<Map> messageBeans=new ArrayList<>();
 			
@@ -131,7 +131,7 @@ public class MessageRest extends BaseJson{
 		String conversationId = map.get("conversationId").toString();
 		try {
 			List message= new ArrayList<>();
-			List<MessageBean> conversationList =messageService.getConversationDetail(conversationId,BaseCofig.minPage,BaseCofig.maxPage);
+			List<MessageBean> conversationList =messageService.getConversationDetail(conversationId,BaseCofig.MINPAGE,BaseCofig.MAXPAGE);
 			for(MessageBean bean:conversationList) {
 				
 				Map resulMap =new HashMap();

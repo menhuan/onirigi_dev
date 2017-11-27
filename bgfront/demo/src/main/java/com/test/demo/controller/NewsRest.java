@@ -124,7 +124,7 @@ public class NewsRest extends BaseJson {
 	    	
 	    	Integer  userId =(Integer) map.get("userId");
     		
-    		List<NewsBean> newsBeans = newsService.selectByUserIdAndOffset(userId,BaseCofig.minPage,BaseCofig.maxPage);
+    		List<NewsBean> newsBeans = newsService.selectByUserIdAndOffset(userId,BaseCofig.MINPAGE,BaseCofig.MAXPAGE);
 
     		if(newsBeans != null) {
     			List<Map> vos = new ArrayList<>();
