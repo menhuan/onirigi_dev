@@ -122,7 +122,7 @@ public class RestRequestClient {
     }
     
     /**
-     * 爬虫 专用
+     * 爬取 36氢的 信息爬虫使用
      * @author ASUS
      * 创建时间  2017年11月18日 下午2:13:11
      * @param url  需要访问的web 
@@ -135,13 +135,30 @@ public class RestRequestClient {
     	
     	 RestTemplate restTemplate = new RestTemplate();
          HttpHeaders headers = new HttpHeaders();
-//         headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8")); 
-//         headers.set("Accept-Charset", "UTF-8");Constants.userAgentArray[new Random().nextInt(Constants.userAgentArray.length)]
          headers.set("User-Agent", USER_AGENT_ARRAY[new Random().nextInt(USER_AGENT_ARRAY.length)]  );
          HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
-//         String result =restTemplate.getForObject(url, String.class);
          ResponseEntity response = restTemplate.exchange(url,HttpMethod.GET, entity, String.class);
          String result = (String) response.getBody();
          return result ;
     }
+    
+    
+    /**
+     * 爬取 火币网 信息 使用的请求Get
+     * @author ASUS
+     * 创建时间  2018年3月11日 下午3:20:16
+     * @param url
+     * @param content
+     * @return
+     */
+    public String restGetHuoBi(String url  ,Object content) {
+    	
+   	 	RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("User-Agent", USER_AGENT_ARRAY[new Random().nextInt(USER_AGENT_ARRAY.length)]  );
+        HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
+        ResponseEntity response = restTemplate.exchange(url,HttpMethod.GET, entity, String.class);
+        String result = (String) response.getBody();
+        return result ;
+   }
 }

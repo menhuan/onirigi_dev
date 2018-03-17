@@ -79,5 +79,28 @@ public class BaseCofig {
 	public static final String CONTAIN_KR_NUM="[0-9]+";
 	
 	
+	/**************************************秘钥***********************************************/
+	
+	/**
+	 * 华鸿家园 ip 访问秘钥  
+	 */
+	public static final String ACCESS_KEY_ID =  "5281dcd6-cd6cedad-140aec98-715b4" ;
+	
+	/**
+	 * 华鸿家园 ip  签名秘钥
+	 */
+	public static final String SECRET_KEY = "207afff0-d2e19905-46be0423-87a4f";
+	
+	/**
+	 * 大米云 ip 访问秘钥
+	 */
+//	public static final String accessKeyId = "dc6b7ed8-0fe5acf8-89e93aca-2b31a";
+	
+	/**
+	 * 大米云 ip 签名秘钥
+	 */
+//	public static final String secretKey  = "a1a43494-d69212d6-f9deda6b-f99dc" ;
+	
+	
 	
 }

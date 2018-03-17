@@ -1,8 +1,15 @@
 package com.test.demo.util;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.test.demo.base.BaseCofig.*;
 
 /**
  * 加密工具类
@@ -16,6 +23,7 @@ public class EncrypUtil {
 	 * 日志组件
 	 */
 	private static Logger logger =LoggerFactory.getLogger(EncrypUtil.class);
+	
 	
 	/**
 	 * 使用MD5加密
@@ -55,4 +63,25 @@ public class EncrypUtil {
 			return null;
 		}
 	}
+	
+	/**
+	 * sha256HMAC 加密
+	 * @author ASUS
+	 * @param conten 需要加密的内容 
+	 * 创建时间  2018年3月11日 下午5:54:13
+	 * @return
+	 */
+	public static String sha256HMAC(String content) {
+		String  result = null;
+		try {
+			Mac HMAC_sha256 = Mac.getInstance("HmacSHA256");
+			SecretKeySpec scretKey = new SecretKeySpec(SECRET_KEY,content);
+		} catch (NoSuchAlgorithmException e) {
+			logger.error("Error HmacSHA256 ========"  +e.getMessage());
+		}
+
+		
+		return result ;
+	}
+	
 }

@@ -69,7 +69,7 @@ public class ProxyJob {
 			try {
 				beans = proxyService.getProxyBeans(proxy);
 			} catch (Exception e) {
-				logger.error("代理ip爬取超时",e);
+				logger.error("代理ip爬取超时 ,尝试失败次数", proxy.getFailureTimes());
 				this.dealWithExce(proxy);
 			}
 			

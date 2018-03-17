@@ -170,7 +170,35 @@ public class RedisDao {
 	 * @param value
 	 * @return
 	 */
-
+	public String   pollAndPush(String key) {
+	 	String result  = redisTemplate.opsForList().rightPopAndLeftPush(key, key);
+	 	return result;
+	}
+	
+	
+	/**
+	 * 取出 指定队列的内容 并计算大小
+	 * @author ASUS
+	 * 创建时间  2018年3月8日 下午11:10:55
+	 * @param key
+	 * @return
+	 */
+	public long  pollListSize(String key) {
+		long  size = redisTemplate.opsForList().size(key);
+	 	return size;
+	}
+	
+	/**
+	 * hash存入数据
+	 * @author ASUS
+	 * 创建时间  2018年3月4日 下午10:18:44
+	 * @param key  主要的key
+	 * @param hashKey hashKey
+	 * @param value  对象value
+	 */
+	public void   putHashValue(String key,String hashKey ,String value) {
+		redisTemplate.opsForHash().put(key, hashKey, value);
+	}
 	
 	/**
 	 * 将数据转换为json保存到redis中
