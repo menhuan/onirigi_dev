@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- 字典dao-->            
+<mapper namespace="com.test.demo.dao.imooc.BusinessDao"> 
+		<resultMap type="com.test.demo.bean.imooc.BusinessBean" id="BusinessResultMap">
+			<id column="id" property="id"/>
+			<result column="img_file_name" property="imgFileName"/>
+			<result column="title"  property="title"/>							
+			<result column="subtitle"  property="subtitle"/>							
+			<result column="price"  property="price"/>							
+			<result column="distance"  property="distance"/>							
+			<result column="number"  property="number"/>							
+			<result column="desc"  property="desc"/>							
+			<result column="city"  property="city"/>							
+			<result column="category"  property="category"/>							
+			<result column="start_total_num"  property="startTotalNum"/>
+			<result column="comment_total_num" property="commentTotalNum" />							
+			<association property="cityDic" javaType="com.test.demo.bean.imooc.DicBean">
+				<result column="city_name" property="name"/>
+			</association>
+			<association property="categoryDic" javaType="com.test.demo.bean.imooc.DicBean">
+				<result column="category_name" property="name"/>
+			</association>
+		</resultMap>
+
+
+
+		<sql id="tableName">imc_business</sql>
+		<sql id="tableOni">id,img_file_name,title,subtitle,price,distance,number,`desc`,city,
+			category,star_total_num,comment_total_num </sql>
+		<sql id="tableSelect"> id,img_file_name as imgFileName ,title,subtitle,price,
+			distance,number,`desc`,city,category,star_total_num as starTotalNum,comment_total_num as commentTotalNum</sql>
+
+		<!-- 插入 广告信息 -->
+		<insert id="insert" parameterType="com.test.demo.bean.imooc.BusinessBean" >
+			 insert into  
+			 <include refid="tableName">
+			 </include>
+			  	  (
+			  	  <include refid="tableOni">
+			  	  </include>
+			  	  )
+ 			values(
+ 					#{id},
+ 					#{imgFileName},
+ 					#{title},
+ 					#{subtitle},
+ 					#{price},
+ 					#{distance},
+ 					#{number},
+ 					#{desc},
+ 					#{city},
+ 					#{category},
+ 					#{starTotalNum},
+ 					#{commentTotalNum}
+ 				)
+		</insert>
+		
+		<!-- 根据主键id查询  -->
+		<select id="selectById" parameterType="com.test.demo.bean.imooc.BusinessBean" 
+			resultType="com.test.demo.bean.imooc.BusinessBean">
+		select  
+			 <include refid="tableOni"></include>
+			 from
+			<include refid="tableName"></include>	
+			as t 		
+			<where>
+				 id = #{id}
+			</where>	 
+	   </select>
+	   
+	   <!-- 模糊查询  -->
+		<select id="selectLikeByPage" parameterType="com.test.demo.bean.imooc.BusinessBean" 
+			resultType="com.test.demo.bean.imooc.BusinessBean">
+		select  
+			 t.id,t.img_file_name as imgFileName ,t.title,t.subtitle,t.price,
+			 t.distance,t.number,t.`desc`,t.city,t.category,t.star_total_num as starTotalNum,t.comment_total_num as commentTotalNum
+		from 
+			<include refid="tableName"></include>	
+			as t 		
+			<where>
+				<if test=" title != null and title != ''
+				 and subtitle != null and subtitle != ''
+				 and desc != null and desc != '' ">
+			 	and (title like '%${title}%' or subtitle like '%${subtitle}%' or `desc` like '%${desc}%')
+				</if>	
+				<if test="city !=null  and city != ''">
+					and city = #{city}
+				</if>
+				<if test="category !=null and category != '' ">
+					and category  =#{category}
+				</if>
+			</where>	 
+			order by id desc
+	   </select>
+	   
+	   
+	   	<select id="selectByPage" resultMap="BusinessResultMap">
+			select  
+			 t.id,t.img_file_name as imgFileName ,t.title,t.subtitle,t.price,
+			 t.distance,t.number,t.desc,t.city,t.category,t.star_total_num as starTotalNum,t.comment_total_num as commentTotalNum,
+			 d.name city_name , dc.name category_name
+			from  
+			  imc_business  	 t 
+			left join imc_dic  d on d.`code` = t.city  and d.type = '${@com.test.demo.constant.DicTypeConst@CITY}'
+			LEFT JOIN imc_dic  dc on dc.`code` = t.category  and dc.type = '${@com.test.demo.constant.DicTypeConst@CATEGORY}'
+			<where>
+				<if test="title !=null  and title != ''">
+					and t.title = #{title} 
+				</if>
+				<if test="subtitle !=null  and subtitle != ''">
+					and t.subtitle = #{subtitle} 
+				</if>
+				<if test="city !=null  and city != ''">
+					and t.city = #{city} 
+				</if>
+				<if test="desc !=null  and desc != ''">
+					and t.`desc`  like '%${desc}%' 
+				</if>
+			
+			</where>	 
+			order by id desc
+	   </select>
+	   
+	   
+	   <!-- 更新 -->
+	   <update id="updateStar" parameterType="Map">
+	   		update 
+	   			<include refid="tableName"></include>  b ,
+	   			
+	   			(select   * from  imc_comment c ,imc_orders o where c.orders_id = o.id and c.create_time &lt;= #{endTime}
+	   			<if test="startTime != null">
+	   				and c.create_time &gt;= #{startTime}
+	   			</if>
+	   			
+	   			group by o.business_id) t
+	            <set>
+		           	b.start_total_num = b.star_total_num +t.star_num ,
+		           	b.comment_total_num = b.comment_total_num + t.comment_num
+	            </set>
+	            
+	            <where>
+						b.id =t.business_id
+	            </where>
+	   
+	   </update>
+	   
+
+</mapper>

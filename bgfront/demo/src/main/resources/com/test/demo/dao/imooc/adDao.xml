@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- 广告dao-->            
+<mapper namespace="com.test.demo.dao.imooc.AdDao"> 
+
+		<sql id="tableName">imc_ad</sql>
+		<sql id="tableOni">title, img_file_name , link , weight ,create_time , 
+		operate_id </sql>
+		<sql id="selectTable">id ,title , img_file_name as imgFileName ,link ,
+		 weight ,create_time as createTime,
+		 operate_id as operateId, update_time as updateTime</sql>
+
+		<!-- 插入 广告信息 -->
+		<insert id="insert" parameterType="com.test.demo.bean.imooc.AdBean" >
+			 insert into  
+			 <include refid="tableName">
+			 </include>
+			  	  (
+			  	  <include refid="tableOni">
+			  	  </include>
+			  	  )
+ 			values(
+ 					#{title},
+ 					#{imgFileName},
+ 					#{link},
+ 					#{weight},
+ 					UNIX_TIMESTAMP(),
+ 					#{operateId}
+ 				)
+		</insert>
+		
+		<!-- 根据条件查询   按照新添加的 排序-->
+		<select id="selectByPage" parameterType="com.test.demo.bean.imooc.AdBean" 
+			resultType="com.test.demo.bean.imooc.AdBean">
+		select  
+			 <include refid="selectTable"></include>
+			 from
+			<include refid="tableName"></include>	
+			as t 		
+			<where>
+				 <if test="id != null">
+				 	id =#{id}
+				 </if>
+				 <if test="title != null and title != '' ">
+				 	and t.title like '%${title}%'
+				 </if>
+				 <if test="weight != null">
+				 	and weight =#{weight}
+				 </if>			
+			</where>	 
+			order by t.weight desc ,t.id desc ;				 	
+			
+	   </select>
+	   
+	   <!-- 更新 -->
+	   <update id="update" parameterType="com.test.demo.bean.imooc.AdBean">
+	   		update 
+	   			<include refid="tableName"></include>
+	            <set>
+	            	<if test="title != null and title != '' ">
+	            		title =#{title}
+	            	</if>
+	            	
+	            	<if test="imgFileName != null and imgFileName != '' ">
+	            		img_file_name =#{imgFileName}
+	            	</if>
+	            	
+	            	<if test="link != null and link != '' ">
+	            		link =#{link}
+	            	</if>
+	            	
+	            	<if test=" weight != null  ">
+	            		weight =#{weight}
+	            	</if>
+	            	
+	            	<if test="operateId != null  ">
+	            		operate_id =#{operateId}
+	            	</if>
+	            	
+	            	<if test=" updateTime != null  ">
+	            		update_time =#{updateTime}
+	            	</if>
+	            </set>
+	            
+	            <where>
+	            	id =#{id}
+	            </where>
+	   
+	   </update>
+	   
+	   <delete id="delete"  parameterType="Long">
+	   		delete from
+	   			<include refid="tableName"></include>
+	   			<where> 
+	   				id= #{id}
+	   			</where>
+	   </delete>
+	   
+		
+		
+		
+
+</mapper>

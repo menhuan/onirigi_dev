@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="header :: publichead"></head>
+<script type="text/javascript" src="/public/js/content/businessAdd.js"></script>
+</head>
+	<body style="background: #e1e9eb;">
+		<form id="mainForm" method="post" action="${basePath}/businesses" enctype="multipart/form-data">
+			<input type="hidden" id="message" th:value="${pageCode.msg}"/>
+			<div class="right">
+				<div class="current">当前位置：<a href="###">内容管理</a> &gt; 商户管理</div>
+				<div class="rightCont">
+					<p class="g_title fix">新增商户</p>
+					<table class="tab1" width="100%">
+						<tbody>
+							<tr>
+								<td align="right" width="15%">标题<font color="red">*</font>：</td>
+								<td width="30%">
+									<input name="title" th:value="${modifyObj.title}" class="allInput" style="width:100%;" type="text"/>
+								</td>
+								<td align="right" width="15%">副标题<font color="red">*</font>：</td>
+								<td width="30%">
+									<input name="subtitle" th:value="${modifyObj.subtitle}" class="allInput" style="width:100%;" type="text"/>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" width="10%">城市<font color="red">*</font>：</td>
+								<td width="30%">
+									<select name="city" th:each="item : ${cityList} }"  >
+											<option th:value="${item.code}" 
+												th:checked="${item.code == modifyObj.category} ? true : false " 
+												th:utext="${item.name}">
+											</option>	
+									<!-- 	<c:forEach items="${cityList}" var="item">
+											
+											<c:if test="${item.code == modifyObj.city}">selected="selected"</c:if>
+											<option value="${item.code}">${item.name}</option>
+										</c:forEach> -->
+									</select>
+								</td>
+								<td align="right" width="10%">类别<font color="red">*</font>：</td>
+								<td width="30%" >
+									<select name="category" th:each="item : ${categoryList} }" >
+											<option th:value="${item.code}" 
+												th:checked="${item.code == modifyObj.category} ? true : false " 
+												th:utext="${item.name}">
+											</option>
+									<!-- 	<c:forEach items="${categoryList}" var="item">
+											<option value="${item.code}" <c:if test="${item.code == modifyObj.category}">selected="selected"</c:if>>${item.name}</option>
+										</c:forEach> -->
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" width="10%">上传图片：</td>
+								<td width="30%">
+									<a href="@{${modifyObj.img}}">查看图片</a>
+									<input type="hidden" name="img" th:value="${modifyObj.img}"/>
+									<input name="imgFile" class="allInput" style="width:100%;" type="file"/>
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="right" width="10%">价格(单位：元)<font color="red">*</font>：</td>
+								<td width="30%">
+									<input name="price"  th:value="${modifyObj.price}" class="allInput" style="width:100%;" type="text"/>
+								</td>
+								<td align="right" width="10%">距离(单位：米)<font color="red">*</font>：</td>
+								<td width="30%">
+									<input name="distance" th:value="${modifyObj.distance}" class="allInput" style="width:100%;" type="text"/>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">描述<font color="red">*</font>：</td>
+								<td width="30%" colspan="3">
+									<textarea name="desc" rows="5" style="width:100%;" th:utext="${modifyObj.desc}"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align: center; margin-top: 30px;">
+						<input class="tabSub" value="保     存" type="button" onclick="add();"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input class="tabSub" value="返     回" type="button"/>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

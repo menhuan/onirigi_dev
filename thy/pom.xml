@@ -88,6 +88,13 @@
 		    <artifactId>xstream</artifactId>
 		    <version>1.4.6</version>
 		</dependency>
+		<!-- 配置分页插件 -->
+        <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.1.0</version>
+		</dependency>
+        
 		
 			
 		<!-- 需要先将两个jar包 打包在maven中 -->
@@ -109,6 +116,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<dependencies>    <!-- 修改代码后自动生效，Reload Java classes without restarting the container -->  
+	                <dependency>  
+	                    <groupId>org.springframework</groupId>  
+	                    <artifactId>springloaded</artifactId>  
+	                    <version>1.2.6.RELEASE</version>  
+	                </dependency>  
+          		 </dependencies>  
 			</plugin>
 		</plugins>
 	</build>

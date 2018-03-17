@@ -244,5 +244,8 @@ public class WeChatController {
 		
 	}
 	
+//	@RequestMapping(value = "/notify" ,method = RequestMethod.POST)
+//	public String notify() {
+	
 	
 }

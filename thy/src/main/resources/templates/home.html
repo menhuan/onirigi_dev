@@ -7,7 +7,7 @@
 <body class="welcome_index">
 <div id="main">
     <div class="container" id="daily">
-        <div class="jscroll-inner" th:with="curDate=${#httpServletRequest.setAttribute('value',1)}">
+        <div class="jscroll-inner" th:with="curDate=${#httpServletRequest.setAttribute('value',1)}" >
             <div class="daily" th:each="vo, voIndex : ${vos}" >
 
                 <h3 class="date" th:if="${value != vo.news.createdDate }">

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- 字典dao-->            
+<mapper namespace="com.test.demo.dao.imooc.DicDao"> 
+
+		<sql id="tableName">imc_dic</sql>
+		<sql id="tableOni">type ,code , name , weight </sql>
+
+	<!-- 	
+		<insert id="insert" parameterType="com.test.demo.bean.imooc.DicBean" >
+			 insert into  
+			 <include refid="tableName">
+			 </include>
+			  	  (
+			  	  <include refid="tableOni">
+			  	  </include>
+			  	  )
+ 			values(
+ 					#{type},
+ 					#{code},
+ 					#{name},
+ 					#{weight}
+ 				)
+		</insert> -->
+		
+		<!-- 根据条件查询  -->
+		<select id="selectDics" parameterType="com.test.demo.bean.imooc.DicBean" 
+			resultType="com.test.demo.bean.imooc.DicBean">
+		select  
+			 <include refid="tableOni"></include>
+			 from
+			<include refid="tableName"></include>	
+			as t 		
+			<where>
+				 <if test="type != null  and type != '' ">
+				 	type =#{type}
+				 </if>
+				 <if test="code != null and code != '' ">
+				 	and t.code = #{code}
+				 </if>
+				  <if test="name != null and name != '' ">
+				 	and t.name like '%${name}%' 
+				 </if>
+				 <if test="weight != null">
+				 	and weight =#{weight}
+				 </if>			
+			</where>	 
+			order by weight 
+	   </select>
+	   
+	 <!-- 
+	   <update id="update" parameterType="com.test.demo.bean.imooc.DicBean">
+	   		update 
+	   			<include refid="tableName"></include>
+	            <set>
+	            	<if test="title != null and title != '' ">
+	            		title =#{title}
+	            	</if>
+	            	
+	            </set>
+	            
+	            <where>
+	            	id =#{id}
+	            </where>
+	   
+	   </update>
+	   
+	   <delete id="delete"  parameterType="Long">
+	   		delete from
+	   			<include refid="tableName"></include>
+	   			<where> 
+	   				type = #{type}
+	   				and code = #{code}
+	   			</where>
+	   </delete>
+	   
+		 -->
+		
+		
+
+</mapper>

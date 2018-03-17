@@ -4,6 +4,7 @@ package manage.thy.util;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,21 @@ public class ResultUtil {
     public static List getResultList(Map map) {
         LinkedHashMap linkedHashMap = (LinkedHashMap) map.get("successResult");
         List list = (List) linkedHashMap.get("result");
+        return list;
+    }
+    
+    @SuppressWarnings("rawtypes")
+	public static List getResultListPage(Map map) {
+        LinkedHashMap linkedHashMap = (LinkedHashMap) map.get("successResult");
+        Map mapResult = (Map) linkedHashMap.get("result");
+        List list =   (List) mapResult.get("list");
+        return list;
+    }
+    
+    public static <T> List getResultListDto(Map map ,Class<T> object) {
+        LinkedHashMap linkedHashMap = (LinkedHashMap) map.get("successResult");
+        Map mapResult = (Map) linkedHashMap.get("result");
+        List<T> list =   (List) mapResult.get("list");
         return list;
     }
 

@@ -1,0 +1,27 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="header :: head"></head>
+<head th:include="header :: up"></head>
+<body class="welcome_index">
+<div id="main">
+    <div class="container" id="daily">
+       	 <input   />
+    </div>
+
+</div>
+<div th:include="header::footer"></div>
+
+<div th:if="${pop != null}">
+    <script>
+        window.loginpop =0;
+    </script>
+    <script type="text/javascript" src="/scripts/main/site/home.js"></script>
+
+</div>
+
+
+</body>
+</html>
+

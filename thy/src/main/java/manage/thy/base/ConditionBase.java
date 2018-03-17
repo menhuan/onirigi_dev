@@ -14,12 +14,12 @@ public class ConditionBase {
     /**
      * 初始化 喜欢的数量
      */
-    public static final Integer NEW_BEAN_LIKE_COUNT=0;
+    public static final Integer NEW_BEAN_LIKE_COUNT = 0;
 
     /**
      * 初始化 评论的数量
      */
-    public static final  Integer NEW_BEAN_COMMENT_COUNT=0;
+    public static final  Integer NEW_BEAN_COMMENT_COUNT = 0;
 
     
     

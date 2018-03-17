@@ -9,4 +9,6 @@ public class ThyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ThyApplication.class, args);
 	}
+	
+	
 }
