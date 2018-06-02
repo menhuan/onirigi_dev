@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.test.demo.job.HuoBTestJob;
 import com.test.demo.job.KrHtmlJob;
 import com.test.demo.job.LotterDataJob;
 import com.test.demo.job.MarketRealInfoJob;
@@ -35,6 +36,9 @@ public class Task {
 	
 	@Autowired
 	ProxyJob  proxyJob;
+	
+	@Autowired
+	HuoBTestJob   huoBTestJob;
 	
 	//@Scheduled(fixedRate=21600000)
 	public void runLotterTask() {
@@ -72,7 +76,16 @@ public class Task {
 			log.error("爬虫失败",e);
 			this.runKrParse();
 		}
-		
+	}
+	
+	@Scheduled(fixedDelay=10*60*1000)
+	public void runHuobi() {
+		try {
+			huoBTestJob.exec();
+		} catch (Exception e) {
+			log.error("爬虫失败",e);
+			this.runKrParse();
+		}
 	}
 	
 }

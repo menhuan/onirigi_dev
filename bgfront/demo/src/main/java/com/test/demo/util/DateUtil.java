@@ -2,11 +2,12 @@ package com.test.demo.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-
 
 import static com.test.demo.util.ConstantsUtil.*;
 /**
@@ -37,6 +38,11 @@ public class DateUtil {
 	
     /**格式化时间为 yyyy-MM-dd*/
     public static   DateTimeFormatter yyyyMMddD = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    /**
+     * utc时区
+     */
+    public static   DateTimeFormatter yyyyMMddTHHmmss = DateTimeFormatter.ofPattern("yyyy-MM-dd’T’HH:mm:ss");
 	/**
 	 * 根据yyyy-MM-dd HH:mm:ss 返回Date类型数据
 	 * @author ASUS
@@ -46,6 +52,20 @@ public class DateUtil {
 	public static Date getDateFromYYMMDDHHmmss(String dateString) throws Exception{
 		Date date=ymdhmsDfformat.parse(dateString);
 		return date;
+	}
+	
+	/**
+	 * 得到yyyy-MM-dd’T’HH:mm:ss模式
+	 * @author ASUS
+	 * 创建时间  2018年3月17日 下午5:51:43
+	 * @param dateString
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getDateyyyyMMddTHHmmss() throws Exception{
+		LocalDateTime  time = LocalDateTime.now();
+		String  result = yyyyMMddTHHmmss.format(time);
+		return result;
 	}
 	
 	/**
@@ -59,7 +79,6 @@ public class DateUtil {
 	public static boolean compareTime(String time ) {
 		boolean result  = false;
 		LocalDate  localDate = LocalDate.parse(time , yyyyMMddD);
-	//	LocalDateTime  localDateTime = LocalDateTime.parse(time, yyyyMMddD).plusDays(PLUS_DAYS);
 		LocalDate toDayLast = localDate.now();
 		result = localDate.isBefore(toDayLast);
 		
@@ -109,6 +128,17 @@ public class DateUtil {
 	public static String createyyyyMMdd(long days){
 		LocalDateTime  localDateTime = LocalDateTime.now().plusDays(days);
 		String result = localDateTime.format(yyyyMMddD);
+		return result;
+	}
+	
+	
+	/**
+	 * 根据时间戳 产生时间
+	 * @author ASUS
+	 * 创建时间  2018年3月17日 下午3:29:19
+	 */
+	public static String time(long time ,DateTimeFormatter df) {
+		String result = df.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(System.currentTimeMillis()),ZoneId.of("Asia/Shanghai")));
 		return result;
 	}
 	

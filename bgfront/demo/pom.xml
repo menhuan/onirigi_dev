@@ -132,6 +132,12 @@
 		  <version>1.0.0</version>
 		</dependency>
 		
+		<dependency>
+		  <groupId>com.aliyun</groupId>
+		  <artifactId>aliyun-java-sdk-core</artifactId>
+		  <version>3.2.8</version>
+		</dependency>
+		
 		<!-- spark 相关内容 -->
 		 <dependency>
             <groupId>org.scala-lang</groupId>

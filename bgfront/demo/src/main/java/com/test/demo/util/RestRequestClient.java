@@ -155,9 +155,31 @@ public class RestRequestClient {
     	
    	 	RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.set("User-Agent", USER_AGENT_ARRAY[new Random().nextInt(USER_AGENT_ARRAY.length)]  );
+        headers.set("User-Agent", USER_AGENT_ARRAY_HUOBI[0]);
+ //       headers.setContentType(MediaType.parseMediaType("application/x-www-form-urlencoded"));
         HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
         ResponseEntity response = restTemplate.exchange(url,HttpMethod.GET, entity, String.class);
+        String result = (String) response.getBody();
+        return result ;
+   }
+   
+    /**
+     * 
+     * @author ASUS
+     * 创建时间  2018年3月18日 下午9:55:46
+     * @param url
+     * @param content
+     * @return
+     */
+   public String restPostHuoBi(String url  ,Object content) {
+    	
+   	 	RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("User-Agent", USER_AGENT_ARRAY_HUOBI[0]);
+        headers.setContentType(MediaType.parseMediaType("application/json; charset=utf-8"));
+ //       headers.setContentType(MediaType.parseMediaType("application/x-www-form-urlencoded"));
+        HttpEntity entity = new HttpEntity(JSON.toJSON(content),headers);
+        ResponseEntity response = restTemplate.exchange(url,HttpMethod.POST, entity, String.class);
         String result = (String) response.getBody();
         return result ;
    }

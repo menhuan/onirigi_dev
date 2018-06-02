@@ -9,6 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.primitives.Bytes;
+
 import static com.test.demo.base.BaseCofig.*;
 
 /**
@@ -75,13 +77,13 @@ public class EncrypUtil {
 		String  result = null;
 		try {
 			Mac HMAC_sha256 = Mac.getInstance("HmacSHA256");
-			SecretKeySpec scretKey = new SecretKeySpec(SECRET_KEY,content);
+			SecretKeySpec scretKey = new SecretKeySpec(SECRET_KEY.getBytes(),content);
 		} catch (NoSuchAlgorithmException e) {
 			logger.error("Error HmacSHA256 ========"  +e.getMessage());
 		}
-
-		
 		return result ;
 	}
+	
+	
 	
 }

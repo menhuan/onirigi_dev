@@ -38,7 +38,7 @@ public class DemoApplication {
 		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
 		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 		jackson2JsonRedisSerializer.setObjectMapper(om);
-
+			
 		template.setValueSerializer(jackson2JsonRedisSerializer);
 		template.setKeySerializer(new StringRedisSerializer());
 		template.afterPropertiesSet();

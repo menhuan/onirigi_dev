@@ -39,7 +39,6 @@ public class MailSenderUtil {
 	 */
 	private static final Logger Logger =LoggerFactory.getLogger(MailSenderUtil.class);
 	
-	@Autowired
 	private JavaMailSenderImpl  mailSender;
 	
 	@Autowired
@@ -56,6 +55,7 @@ public class MailSenderUtil {
 	 * 创建时间  2017年9月17日 下午8:16:32
 	 */
 	public void setMailSender()  {
+		mailSender = new JavaMailSenderImpl();
 		try {
 			String   emailAddress = redisDao.pollAndPush(EMAIL_ADDRESS_LIST);
 			EmailBean  emailBean  = JSON.parseObject(emailAddress, EmailBean.class);

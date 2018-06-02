@@ -17,7 +17,4 @@ public class BaseUrl {
 	public static final String  YT_MARKET_REAL_INFO=YT_BASE+ "real-info";
 	
 	
-	/***************************************火币网的交易链接接口************************************************/
-	
-	
 }
