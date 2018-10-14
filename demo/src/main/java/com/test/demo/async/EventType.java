@@ -1,6 +1,5 @@
 package com.test.demo.async;
 
-import static org.mockito.Matchers.intThat;
 
 /**
  * 事件类型

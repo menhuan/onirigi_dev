@@ -44,7 +44,7 @@ public class DemoApplication {
 		template.afterPropertiesSet();
 
 		return template;
-
 	}
+
 }
 
